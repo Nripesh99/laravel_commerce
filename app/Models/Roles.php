@@ -18,7 +18,7 @@ class Roles extends Model
     // to establish the relationship with the roles_permissin table 
     public function permissions()
     {
-        return $this->belongsToMany(Permisson::class, 'roles_permission', 'roles_id', 'permission_id')->withTimestamps();;
+        return $this->belongsToMany(Permission::class, 'roles_permission', 'roles_id', 'permission_id')->withTimestamps();;
     }
 
     public static function boot()
@@ -28,7 +28,7 @@ class Roles extends Model
         // Event listener for deleting a role
         static::deleting(function ($role) {
             // Delete associated permissions
-            $role->permissions()->detach();
+            // $role->permission()->detach();
         });
 
     }

@@ -20,9 +20,9 @@ class Category extends Model
     }
 
     // for the subcategories
-    public function subcategory()
+    public function subcategories()
     {
-        return $this->hasMany(\App\Models\Category::class, 'parent_id')->with('subcategory');
+        return $this->hasMany(\App\Models\Category::class, 'parent_id')->with('subcategories');
     }
 
     // for the subcategories

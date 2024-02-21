@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('categories',function (Blueprint $table)
         {
             // to add the new column 
-            $table->unsignedBigInteger('parent_id')->nullable();
+            // $table->foreign('parent_id')->references('id')->on('categories');
         });
     
     }

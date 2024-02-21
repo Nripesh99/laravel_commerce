@@ -53,7 +53,7 @@ class FrontendController extends Controller
         $slider = Slider::get();
         $featuredProducts = Product::get();
         $products = Product::cursorPaginate(10);
-        $categories = Category::with('subcategory')->where('parent_id', null)->get();
+        $categories = Category::with('subcategories')->where('parent_id', null)->get();
         $date = Carbon::today()->subDays(50);
         $newArrivals = Product::where('created_at', '>=', $date)->get();
         // dd($newArrivals->toArray());

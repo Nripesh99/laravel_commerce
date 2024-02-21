@@ -110,7 +110,7 @@
                             {{-- Giving the id as data-bs-target so that it will properly know which is being selected --}}
                             <div class="collapse" id="{{ $category->id }}" style="">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    @foreach ($category->subcategory as $subcategory)
+                                    @foreach ($category->subcategories as $subcategory)
                                         <li class="">
 
                                             {{-- for the subcategories --}}
@@ -601,25 +601,7 @@
         }
 
         //  for creating the dropdown menu
-        const subElement = document.querySelectorAll('#subcategory');
-        const liElement = document.querySelector('#lists');
-        // console.log(subElement);
-        subElement.forEach(subBtn => {
-            let emptyElement = "";
-            subBtn.addEventListener('mouseover', () => {
-                // console.log('hovered');
-                emptyElement +=
-                    ` @foreach ($subcategory->subcategory as $subsubcat)
-                    {{-- <li class=""> --}}
-                        <button class="btn btn-toggle d-inline-flex align-items-center ms-4 rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="{{ '#' . $subcategory->id }}" aria-expanded="false">
-                                {{ $subsubcat->name }}
-                        </button>
-                    {{-- </li> --}}
-                  @endforeach`;
-                subElement.innerHTML = emptyElement;
-            });
 
-        })
 
 
         // this is for the whishlist 

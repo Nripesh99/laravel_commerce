@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             // for the products table
-            $table->softDeletes();
+            // $table->softDeletes();
         });
     }
 

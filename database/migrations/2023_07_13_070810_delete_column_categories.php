@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('categories',function (Blueprint $table)
         {
             // to add the new column 
-            $table->dropColumn('user_id','parent_id');
+            // $table->dropColumn('user_id','parent_id');
         });
     
     }

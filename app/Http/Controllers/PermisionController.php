@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Permisson;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 
 class PermisionController extends Controller
@@ -12,7 +12,7 @@ class PermisionController extends Controller
      */
     public function index()
     {
-        $permissions = Permisson::get();
+        $permissions = Permission::get();
         return view('permissions.index',compact('permissions'));
     }
 
@@ -33,12 +33,12 @@ class PermisionController extends Controller
             'name' => 'string|required',
         ]);
 
-        $permission = Permisson::create([
+        $permission = Permission::create([
             'name' => $validation['name'],
         ]);
         // $permission->save();
         // after it has been successfully saved redirect to the home page 
-        return redirect()->route('permission.index')->with('success','added permission');
+        return redirect()->route('permissions.index')->with('success','added permission');
 
     }
 
@@ -56,7 +56,7 @@ class PermisionController extends Controller
     public function edit(string $id)
     {
         // basically it will help to get the permission id first
-        $permission = Permisson::with('roles')->where('id',$id)->first();
+        $permission = Permission::with('roles')->where('id',$id)->first();
         // $permission = Permisson::with('roles')->get();
         // it will help to return the view for editing files as well as for accessing the permisison
         // key and values
@@ -75,7 +75,7 @@ class PermisionController extends Controller
         ]);
 
         // searching the data
-        $permission = Permisson::findOrFail($id);
+        $permission = Permission::findOrFail($id);
         // to validate the name we are trying to store
         $permission->name = $validation['name'];
         // to save the data
@@ -88,7 +88,7 @@ class PermisionController extends Controller
      */
     public function destroy(string $id)
     {
-        $permision = Permisson::where('id',$id)->first();
+        $permision = Permission::where('id',$id)->first();
         $permision->delete();
         return redirect()->back()->with('success','deleted successfuylly');        
     }

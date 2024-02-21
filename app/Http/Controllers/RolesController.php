@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Permisson;
+use App\Models\Permission;
 use App\Models\UserRoles;
 use Illuminate\Http\Request;
 use App\Models\Roles;
@@ -25,7 +25,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        $permissions = Permisson::with('roles')->get();
+        $permissions = Permission::with('roles')->get();
         // dd($permissions->toArray());
         return view('roles.create',compact('permissions'));
     }
@@ -99,7 +99,7 @@ class RolesController extends Controller
         // to return the new file to edit where form will be displayed
         $roles = Roles::where('id',$id)->first();
         // $currentRoles = $roles->permissons()->get();
-        $permissions = Permisson::with("roles")->get();
+        $permissions = Permission::with("roles")->get();
         // dd($permissions->toArray());
         return view('roles.edit',compact('roles','permissions'));
     }

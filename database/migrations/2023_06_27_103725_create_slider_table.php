@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('slider', function (Blueprint $table) 
+        Schema::create('sliders', function (Blueprint $table) 
         {
             // table attributes creation  when we assign the 
             $table->id();
@@ -24,7 +24,7 @@ return new class extends Migration
             // this is for creation of the category id 
             $table->unsignedBigInteger('category_id');
             // this is used to create a foreign key relationship with the category table 
-            $table->foreign('category_id')->references('id')->on('category');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

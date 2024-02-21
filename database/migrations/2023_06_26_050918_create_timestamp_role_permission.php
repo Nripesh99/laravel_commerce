@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('roles_permission', function (Blueprint $table) {
             // $table->id();
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('timestamp_role_permission');
+        // Schema::dropIfExists('timestamp_role_permission');
     }
     
 };

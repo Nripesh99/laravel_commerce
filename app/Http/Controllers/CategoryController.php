@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         // to get all the data from the database 
-        $categories = Category::with("sliders","subcategory",'products')->get();
+        $categories = Category::with("sliders","subcategories",'products')->get();
         // dd($categories->toArray());
         return view('categories.index',compact('categories'));
     }
@@ -39,7 +39,7 @@ class CategoryController extends Controller
         // to validate the request first 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
-            'parent_id' => 'required|numeric',
+            'parent_id' => 'nullable|numeric',
            
         ]);
  
