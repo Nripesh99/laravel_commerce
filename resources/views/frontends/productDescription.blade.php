@@ -430,7 +430,6 @@
                 let currentQuantity = parseInt(quantityInput.value);
                 // to get the data attribute on which being clicked
                 productId = cart.getAttribute('data-product-id');
-                console.log(productId);
                 fetch(`/carts-store`, {
                         method: 'POST',
                         headers: {
