@@ -131,7 +131,7 @@
                                         </a> --}}
 
                                             {{-- Check if the subcategory has subcategories --}}
-                                            @if ($subcategory->subcategory->isNotEmpty())
+                                            @if ($subcategory->subcategories->isNotEmpty())
                                                 {{-- Nested list to display sub-subcategories --}}
                                                 <div class="collapse" id="{{ $subcategory->id }}" style="">
                                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"

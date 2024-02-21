@@ -51,7 +51,7 @@ class ProductController extends Controller
                 array_push($product_color, $colorName);
             }
         }
-
+        // dd($product_color);
 
 
         return view('products.create', compact('categoryProducts', 'attributes', 'product_color'));
@@ -153,7 +153,6 @@ class ProductController extends Controller
                 'colors' => json_encode($containsVariantColorValue),
                 'isVariant' => 1,
             ]);
-        // dd($product);
 
             $variantImagePaths = [];
 
