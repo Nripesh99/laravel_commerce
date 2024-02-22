@@ -144,8 +144,9 @@
 
         // to add the cart in the and modals in the 
         const allCartButton = document.querySelector('.allCart');
+        console.log(allCartButton);
         const modalBody = document.querySelector('.modal-body');
-
+        console.log(modalBody);
         allCartButton.addEventListener('click', function() {
             fetch(`/cart-details`)
                 .then(response => response.json())

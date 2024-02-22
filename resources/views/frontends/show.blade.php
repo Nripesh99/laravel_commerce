@@ -136,7 +136,7 @@
                                                 <div class="collapse" id="{{ $subcategory->id }}" style="">
                                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small"
                                                         id="lists">
-                                                        @foreach ($subcategory->subcategory as $subsubcat)
+                                                        @foreach ($subcategory->subcategories as $subsubcat)
                                                             <li class="">
                                                                 <button
                                                                     class="btn btn-toggle d-inline-flex align-items-center ms-4 rounded border-0 collapsed"

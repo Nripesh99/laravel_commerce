@@ -75,7 +75,6 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-        dd($request);
        
         //  to store the the data in the database when being clicked
         

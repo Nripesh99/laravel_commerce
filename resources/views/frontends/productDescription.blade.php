@@ -408,7 +408,7 @@
 
         // when the user clicks on the add to cart button 
         let cart = document.querySelector(".add-cart");
-
+        
         // variable authUserId and loginRoute initialized in frontend.blade.php
 
         // let authUserId = @json(auth()->check());
