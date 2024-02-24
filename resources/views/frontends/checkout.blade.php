@@ -10,9 +10,41 @@
 @section('home')
     <div class="container d-flex justify-content-center align-items-center vh-100">
 
+                <!-- Card -->
+                <div style="display:none">
+                    @php
+                        $amount = 0;
+                        $itemPrice = [];
+                        $orderDetails = [];
+                    @endphp
+
+                    @foreach ($products as $product)
+                        {{-- {{dd($products)}} --}}
+                        <div class="card-body border">
+                            <h5 class="card-title p-2 m-2">Product: <span style="color: #fc6000;">{{ $product->name }}</h5>
+                            <p class="card-quantity p-2 m-2 fs-5">Quantity * <span
+                                    style="color: #fc6000;">{{ $product->quantity }}</span></p>
+                            <p class="card-text p-2 m-2 price">Price: <span style="color: #fc6000;">{{ $product->price }}
+                            </p>
+                            @php
+                                array_push($itemPrice, $product->price * $product->quantity);
+                                $orderDetails[] = [
+                                    'name' => $product->name,
+                                    'price' => $product->price * $product->quantity,
+                                ];
+                            @endphp
+                        </div>
+                    @endforeach
+
+                    @foreach ($itemPrice as $price)
+                        @php
+                            $amount += $price;
+                        @endphp
+                    @endforeach
+                </div>
         @php
             
-            $amount = '100';
+            // $amount = '2000';
             $transaction_uuid = bin2hex(random_bytes(20));
             $product_code = 'EPAYTEST';
             
@@ -27,7 +59,7 @@
 
 
 
-        <form action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST" class="esewa-form" style="display: none;">
+        <form action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST" class="esewa-form" >
             {{-- <form action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST"> --}}
             <input type="text" id="amount" name="amount" value="100" required>
             <input type="text" id="tax_amount" name="tax_amount" value="0" required>
@@ -80,6 +112,9 @@
                             $totalAmount += $price;
                         @endphp
                     @endforeach
+                    <script>
+                        
+                    </script>
 
                     <div class="card-footer">
                         Total Amount:
@@ -156,7 +191,10 @@
             let totalAmount = 0;
             orderDetails.forEach(item => {
                 totalAmount += parseFloat(item.price * item.quantity);
+
             });
+
+
 
             // for the validation if the order has not been placed at all
             if (totalAmount == 0) {
@@ -191,7 +229,7 @@
                     } else {
                         toastr.info(data.message);
                     }
-
+                    
                 })
                 .catch(error => {
                     console.error(error);
@@ -207,6 +245,9 @@
         const esewaForm = document.querySelector('.esewa-form');
 
         const totalPriceProducts = document.querySelector(".totalPrice").textContent.trim();
+        document.getElementById('total_amount').value =document.querySelector(".totalPrice").textContent.trim() ;
+        document.getElementById('amount').value =document.querySelector(".totalPrice").textContent.trim() ;
+
 
         esewaBtn.addEventListener('click', (e) => {
             e.preventDefault();
